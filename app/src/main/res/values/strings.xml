@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Marvel</string>
+    <string name="api_key">apikey</string>
+    <string name="api_hash">hash</string>
+    <string name="api_ts">ts</string>
+    <string name="database_name">marvel_app_database</string>
+    <string name="title_app">Marvel</string>
+    <string name="error_something_went_wrong">Oops, algo salió mal</string>
+    <string name="title_creator">Creadores</string>
+    <string name="title_stories">Historias</string>
+    <string name="title_characters">Personajes</string>
+    <string name="not_image_url">http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg</string>
+    <string name="title_toolbar_comics_favorite">Mis Comics</string>
+    <string name="not_found_comics_favorites">No tienes comics favoritos todavia.</string>
+    <string name="refresh">Reintentar</string>
+    <string name="title_toolbar_comics_detail">Información Detalle</string>
+    <string name="not_conexion_internet">Oops, algo salió mal, valida tu conexión a internet y vuelve a intentar</string>
+</resources>

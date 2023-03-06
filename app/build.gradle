@@ -1,0 +1,138 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    namespace 'com.example.marvel'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.marvel"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "BASE_URL", "\"https://gateway.marvel.com/v1/public/\""
+            buildConfigField "String", "MARVEL_API_PUBLIC_KEY", "\"73bec2030128db12e063a772ffbdac54\""
+            buildConfigField "String", "MARVEL_API_PRIVATE_KEY", "\"99f7c3a7edba69a7594aa045b92f3d93ec818d84\""
+        }
+
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+
+            buildConfigField "String", "BASE_URL", "\"https://gateway.marvel.com/v1/public/\""
+            buildConfigField "String", "MARVEL_API_PUBLIC_KEY", "\"73bec2030128db12e063a772ffbdac54\""
+            buildConfigField "String", "MARVEL_API_PRIVATE_KEY", "\"99f7c3a7edba69a7594aa045b92f3d93ec818d84\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.0'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    // Androidx
+    implementation "androidx.core:core-ktx:$core_androidx"
+
+    // Compose
+    implementation "androidx.activity:activity-compose:$compose_activity_version"
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.compose.material3:material3:$compose_material_cersion"
+    implementation "androidx.constraintlayout:constraintlayout-compose:$compose_constraintlayout_version"
+    implementation "androidx.navigation:navigation-compose:$compose_navigation"
+    implementation "androidx.hilt:hilt-navigation-compose:$compose_hilt_navigation"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_lifecycle_viewmodel"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.27.0"
+
+    // Coil
+    implementation "io.coil-kt:coil-compose:$compose_coil_version"
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_compose_version"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    // Retrofit + okhttp + moshi + gson
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:$daggerHilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$daggerHilt_version"
+
+    // ROOM
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-paging:$room_version"
+
+    // paging
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation "androidx.paging:paging-compose:$paging_compose_version"
+
+    // Test Unit - Android Integration
+    testImplementation "androidx.test.ext:junit-ktx:$test_junit_version"
+    testImplementation "androidx.test:core-ktx:$test_core_junit_version"
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "org.mockito:mockito-core:$test_mockito_version"
+    testImplementation "org.mockito:mockito-inline:$test_mockito_version"
+    testImplementation "io.mockk:mockk:$test_mock_version"
+    testImplementation "org.hamcrest:hamcrest:$test_hamcrest_version"
+    testImplementation "org.robolectric:robolectric:$test_robolectric_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+    testImplementation "app.cash.turbine:turbine:$test_turbine_version"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
+
+    androidTestImplementation "androidx.test.ext:junit:$test_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$expreso_version"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    androidTestImplementation "org.mockito:mockito-core:$test_mockito_version"
+    androidTestImplementation "org.mockito:mockito-inline:$test_mockito_version"
+    androidTestImplementation "io.mockk:mockk:$test_mock_version"
+    androidTestImplementation "androidx.arch.core:core-testing:$test_arch_core_version"
+    androidTestImplementation "app.cash.turbine:turbine:$test_turbine_version"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
+
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+}
